@@ -96,9 +96,7 @@ class Media(ApiModel):
 
         new_media.comment_count = entry['comments']['count']
         new_media.comments = []
-        print (entry['comments'])
-        newMediaData = entry['comments'].get('data', None)
-        if newMediaData:
+        if 'data' in entry['comments']:
             for comment in entry['comments']['data']:
                 new_media.comments.append(Comment.object_from_dictionary(comment))
 
